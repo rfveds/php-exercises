@@ -36,13 +36,39 @@ class Person {
 ```
 
 ### Class properties promotion
-- PHP 8.0 introduced a new feature called "constructor property promotion".
 - It allows you to declare class properties and pass them as arguments to the constructor in a single line.
 ```php
 class Person {
     public function __construct(public string $name, public int $age) {}
 }
 ```
+- Callable is not allowed in constructor property promotion.
+```php
+class Person {
+    public function __construct(public callable $callback) {} // Error
+}
+```
+
+### Nullsafe Operator
+- It allows you to call methods on an object without having to check if the object is null.
+```php
+$person = new Person();
+$person->getAddress()?->getCity(); // If getAddress() returns null, getCity() will not be called.
+```
+
+### Nullcoalescing Operator
+- It returns the value of its first operand if it exists and is not NULL; otherwise, it returns its second operand.
+- It doesn't work with methods that return void or null.
+```php
+$person = new Person();
+$city = $person->getAddress()->getCity() ?? "Unknown";
+```
+
+### Combining Nullsafe and Nullcoalescing Operator
+```php
+$city = $person->getAddress()?->getCity() ?? "Unknown";
+```
+
 
 ### Chaining Methods
 - Chaining methods is a technique that allows you to call multiple methods in a single line.
