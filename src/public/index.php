@@ -12,6 +12,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 session_start();
 
 const STORAGE_PATH = __DIR__ . '/../storage/';
+const VIEWS_PATH = __DIR__ . '/../views/';
 
 $router = new Router();
 

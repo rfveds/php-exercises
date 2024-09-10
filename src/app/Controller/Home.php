@@ -4,11 +4,15 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\View;
+
 class Home
 {
-    public function index()
+    public function index(): View
     {
-        echo 'Hello, world!';
+        return View::make('home/index', [
+            'foo' => 'bar',
+        ]);
     }
 
 }

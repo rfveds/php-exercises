@@ -4,17 +4,13 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\View;
+
 class File
 {
-    public function index(): string
+    public function index(): View
     {
-        return <<<FORM
-        <form action="/file/upload" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" />
-            <button type="submit">Upload</button>
-        </form>
-FORM;
-
+        return View::make('file/index');
     }
 
     public function upload(): string
