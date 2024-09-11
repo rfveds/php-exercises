@@ -31,16 +31,15 @@ class Router
             return call_user_func($action);
         }
 
-        if (is_array($action)) {
-            [$controller, $method] = $action;
+        [$controller, $method] = $action;
 
-            if (class_exists($controller)) {
-                $controller = new $controller();
-                if (method_exists($controller, $method)) {
-                    return call_user_func_array([$controller, $method], []);
-                }
+        if (class_exists($controller)) {
+            $controller = new $controller();
+            if (method_exists($controller, $method)) {
+                return call_user_func_array([$controller, $method], []);
             }
         }
+
 
         throw new RouteNotFoundException();
     }
@@ -59,5 +58,6 @@ class Router
     {
         return $this->routes;
     }
+
 }
 
