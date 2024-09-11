@@ -22,6 +22,19 @@ services:
     networks:
       - app-network
 
+  db:
+    container_name: php-learning-db
+    image: mysql:8.0
+    volumes:
+      - ./storage/db:/var/lib/mysql
+    restart: always
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    networks:
+        - app-network
+
 # Network is used to connect the containers in the same network
 # Bridge Network: The bridge driver creates a private internal network on the host. Containers connected to this network
 #                 can communicate with each other, but they are isolated from external networks unless explicitly exposed.

@@ -13,15 +13,21 @@ class File
         return View::make('file/index');
     }
 
-    public function upload(): string
+    public function upload(): void
     {
         $filePath = STORAGE_PATH . $_FILES['file']['name'];
         move_uploaded_file($_FILES['file']['tmp_name'], $filePath);
 
-        echo '<pre>';
-        var_dump(pathinfo($filePath));
-        echo '</pre>';
+        header('Location: /');
+        exit();
 
-        return 'File uploaded';
+    }
+
+    public function download(): void
+    {
+        $filePath = STORAGE_PATH . $_GET['file'];
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="' . basename($filePath) . '"');
+        readfile($filePath);
     }
 }

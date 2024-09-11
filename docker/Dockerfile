@@ -12,6 +12,10 @@ RUN apt-get update && apt-get install -y \
 # Instal composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+# Configure and install PHP extensions
+RUN docker-php-ext-configure intl \
+    && docker-php-ext-install pdo pdo_mysql intl
+
 # Set working directory
 WORKDIR /var/www
 
