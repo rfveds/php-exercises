@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\App;
 use App\Model\SignUp;
 use App\Model\User;
 use App\View;

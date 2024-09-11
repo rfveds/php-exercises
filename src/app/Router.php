@@ -54,5 +54,10 @@ class Router
     {
         return $this->register('post', $route, $action);
     }
+
+    public function routes(): array
+    {
+        return $this->routes;
+    }
 }
 
