@@ -5,10 +5,10 @@
 
 ### Mocking
 
-- ***API Calls***: We don't want to make actual API calls in our tests. We want to mock the API calls.
-- ***Email & SMS***: We don't want to send actual emails or SMS in our tests. We want to mock the email and SMS sending.
-- ***Database***: We don't want to make actual database calls in our tests. We want to mock the database calls.
-- ***Models***: We don't want to make actual model calls in our tests. We want to mock the model calls.
+- ***API Calls***: Mock API calls in tests.
+- ***Email & SMS***: Mock email and SMS sending in tests.
+- ***Database***: Mock database calls in tests.
+- ***Models***: Mock model calls in tests.
 
 - By default, methods from mocked classes return `null`. We can change this behaviour by using `willReturn()` method.
 

@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Container;
 use App\Controller\File;
 use App\Controller\Home;
 use App\Controller\Invoice;
@@ -17,7 +18,10 @@ $dotenv->load();
 const STORAGE_PATH = __DIR__ . '/../storage/';
 const VIEWS_PATH = __DIR__ . '/../views/';
 
-$router = new Router();
+$container = new Container();
+$router = new Router($container);
+
+
 $router
     ->get('/', [Home::class, 'index'])
     ->get('/invoices', [Invoice::class, 'index'])
@@ -28,6 +32,7 @@ $router
 
 
 (new App\App(
+    $container,
     $router,
     [
         'path' => $_SERVER['REQUEST_URI'],
