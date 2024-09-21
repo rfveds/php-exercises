@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 use App\Container;
-use App\Controller\File;
-use App\Controller\Home;
-use App\Controller\Invoice;
+use App\Controller\FileController;
+use App\Controller\HomeController;
+use App\Controller\InvoiceController;
 use App\Router;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -23,12 +23,12 @@ $router = new Router($container);
 
 
 $router
-    ->get('/', [Home::class, 'index'])
-    ->get('/invoices', [Invoice::class, 'index'])
-    ->post('/invoices', [Invoice::class, 'create'])
-    ->get('/file', [File::class, 'index'])
-    ->post('/file/upload', [File::class, 'upload'])
-    ->get('/file/download', [File::class, 'download']);
+    ->get('/', [HomeController::class, 'index'])
+    ->get('/invoices', [InvoiceController::class, 'index'])
+    ->post('/invoices', [InvoiceController::class, 'create'])
+    ->get('/file', [FileController::class, 'index'])
+    ->post('/file/upload', [FileController::class, 'upload'])
+    ->get('/file/download', [FileController::class, 'download']);
 
 
 (new App\App(

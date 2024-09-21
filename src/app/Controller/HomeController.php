@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Attributes\Get;
 use App\Model\SignUp;
 use App\Model\User;
 use App\View;
 
-class Home
+class HomeController
 {
+    #[Get('/')]
     public function index(): View
     {
         $name = 'John Doe';
